@@ -6,8 +6,15 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Email
 import androidx.compose.material3.Button
+import androidx.compose.material3.Divider
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -22,6 +29,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 
+data class Task(
+    var id: String ?= null,
+    var name: String ?= null
+)
 @Composable
 fun FirstScreen() {
 
@@ -101,5 +112,77 @@ fun FirstScreen() {
 @Preview
 @Composable
 fun previewComponent() {
-    FirstScreen()
+//    FirstScreen()
+
+    DayTwoScreen()
+}
+
+
+@Composable
+fun DayTwoScreen() {
+
+
+    var tasks = List(20) { i->
+        Task("$i","this is process for $i")
+    }
+    Scaffold(
+
+        topBar = {
+            Text("This is top bar")
+        },
+
+        bottomBar = {},
+
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick =  {
+
+                }
+            ) {
+                Icon(Icons.Default.Email, contentDescription = "email")
+            }
+        }
+
+
+    ) { innerPadding->
+
+
+        Column(
+            modifier = Modifier
+                .padding(innerPadding)
+        ) {
+
+            Text("Hello")
+
+            LazyColumn(
+
+                modifier = Modifier.fillMaxWidth()
+            ) {
+
+                items(tasks.size) { task->
+
+                   listItem(tasks[task])
+                }
+
+            }
+
+
+
+
+
+        }
+
+    }
+}
+
+
+@Composable
+fun listItem(task: Task) {
+    Column {
+
+        Text(task.id.toString())
+        Text(task.name.toString())
+
+        Divider()
+    }
 }
