@@ -20,6 +20,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.o7solutions.android_compose.ImageRecognition.AIScanScreen
 import com.o7solutions.android_compose.View.HomeScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
@@ -66,7 +67,7 @@ fun MainAppContainer() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(Screen.Home.route) { HomeScreen() }
-            composable(Screen.Search.route) { SearchScreen("Search Content") }
+            composable(Screen.Search.route) { AIScanScreen() }
             composable(Screen.Profile.route) { ProfileScreen("Profile Content") }
         }
     }
