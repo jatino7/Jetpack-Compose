@@ -14,4 +14,12 @@ data class LoginResponse(
 
 data class LoginRequest(
     val email: String ?= null,
-    val password: String ?= null)
+    val password: String ?= null
+)
+
+data class UserRequest (
+    val name: String ?= null,
+    val email: String ?= null,
+    val password: String ?= null,
+    val avatar: String ?= null
+)
