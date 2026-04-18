@@ -5,3 +5,13 @@ data class Category(
     val name: String,
     val image: String
 )
+
+data class LoginResponse(
+    val access_token: String ?= null,
+    val refresh_token: String ?= null
+)
+
+
+data class LoginRequest(
+    val email: String ?= null,
+    val password: String ?= null)

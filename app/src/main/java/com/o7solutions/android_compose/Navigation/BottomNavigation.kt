@@ -1,4 +1,4 @@
-package com.o7solutions.android_compose.BottomNavigation
+package com.o7solutions.android_compose.Navigation
 
 
 import androidx.compose.foundation.layout.Box
@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -32,7 +33,7 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
 val navItems = listOf(Screen.Home, Screen.Search, Screen.Profile)
 
 @Composable
-fun MainAppContainer() {
+fun MainAppContainer(navController: NavHostController) {
 
     val navController = rememberNavController()
 
