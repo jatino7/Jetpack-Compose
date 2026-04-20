@@ -1,5 +1,6 @@
 package com.o7solutions.android_compose.View
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.CircleShape
@@ -13,13 +14,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.o7solutions.android_compose.Model.Category
 import com.o7solutions.android_compose.ViewModels.CategoryViewModel
 
 @Composable
-fun HomeScreen() {
-    // ViewModel initialized inside the function body
+fun HomeScreen(outerNavController: NavController) {
     val categoryViewModel: CategoryViewModel = viewModel()
     val categories = categoryViewModel.categoryListResponse
 
@@ -49,9 +50,16 @@ fun HomeScreen() {
                 contentPadding = PaddingValues(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                // Using categories.size and indexing
                 items(categories.size) { index ->
-                    CategoryItem(category = categories[index])
+                    val category = categories[index]
+                    CategoryItem(
+                        category = category,
+
+//                       navigating to category products  screen
+                        onItemClick = {
+                            outerNavController.navigate("category_products/${category.id}/${category.name}")
+                        }
+                    )
                 }
             }
         }
@@ -59,14 +67,17 @@ fun HomeScreen() {
 }
 
 @Composable
-fun CategoryItem(category: Category) {
+fun CategoryItem(category: Category, onItemClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.width(80.dp)
     ) {
         Card(
             shape = CircleShape,
-            modifier = Modifier.size(70.dp),
+            modifier = Modifier
+                .size(70.dp)
+                // Added clickable to the Card
+                .clickable { onItemClick() },
             elevation = CardDefaults.cardElevation(2.dp)
         ) {
             AsyncImage(

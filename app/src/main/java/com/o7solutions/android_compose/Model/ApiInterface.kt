@@ -5,6 +5,7 @@ import retrofit2.http.Body
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -15,8 +16,13 @@ interface ApiService {
     @POST("auth/login")
     suspend fun login(@Body request: LoginRequest): Response<LoginResponse>
 
-    @POST("users")
-    suspend fun createUser(@Body user: UserRequest): Response<UserResponse>
+    @GET("products")
+    suspend fun getProductsByCategory(
+        @Query("categoryId") categoryId: Int
+    ): List<ProductResponseItem>
+
+//    @POST("users")
+//    suspend fun createUser(@Body user: UserRequest): Response<UserResponse>
 
 
 //    @POST("auth/login")

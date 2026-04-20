@@ -33,14 +33,14 @@ sealed class Screen(val route: String, val label: String, val icon: ImageVector)
 val navItems = listOf(Screen.Home, Screen.Search, Screen.Profile)
 
 @Composable
-fun MainAppContainer(navController: NavHostController) {
+fun MainAppContainer(outerNavController: NavHostController) {
 
-    val navController = rememberNavController()
+    val innerNavController = rememberNavController()
 
     Scaffold(
         bottomBar = {
             NavigationBar {
-                val navBackStackEntry by navController.currentBackStackEntryAsState()
+                val navBackStackEntry by innerNavController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination
 
                 navItems.forEach { screen ->
@@ -49,8 +49,8 @@ fun MainAppContainer(navController: NavHostController) {
                         label = { Text(screen.label) },
                         selected = currentDestination?.hierarchy?.any { it.route == screen.route } == true,
                         onClick = {
-                            navController.navigate(screen.route) {
-                                popUpTo(navController.graph.findStartDestination().id) {
+                            innerNavController.navigate(screen.route) {
+                                popUpTo(innerNavController.graph.findStartDestination().id) {
                                     saveState = true
                                 }
                                 launchSingleTop = true
@@ -63,11 +63,11 @@ fun MainAppContainer(navController: NavHostController) {
         }
     ) { innerPadding ->
         NavHost(
-            navController = navController,
+            navController = innerNavController,
             startDestination = Screen.Home.route,
             modifier = Modifier.padding(innerPadding)
         ) {
-            composable(Screen.Home.route) { HomeScreen() }
+            composable(Screen.Home.route) { HomeScreen(outerNavController) }
             composable(Screen.Search.route) { AIScanScreen() }
             composable(Screen.Profile.route) { ProfileScreen("Profile Content") }
         }

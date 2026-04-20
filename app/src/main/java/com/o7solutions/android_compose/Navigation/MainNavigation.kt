@@ -24,6 +24,7 @@ import kotlinx.coroutines.delay
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.o7solutions.android_compose.Utils.DataStoreManager
+import com.o7solutions.android_compose.View.CategoryProducts
 import com.o7solutions.android_compose.View.LoginScreen
 
 
@@ -43,6 +44,13 @@ fun MainNavigation(navController: NavHostController) {
 
         composable(Dest.MAIN) {
             MainAppContainer(navController)
+        }
+
+        composable("category_products/{catId}/{catName}") { backStackEntry ->
+            val catId = backStackEntry.arguments?.getString("catId")?.toInt() ?: 0
+            val catName = backStackEntry.arguments?.getString("catName") ?: ""
+//            CategoryProductsScreen(catId, catName)
+            CategoryProducts(catId,catName)
         }
     }
 }
