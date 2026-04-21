@@ -65,9 +65,15 @@ dependencies {
     implementation("io.coil-kt:coil-compose:2.4.0")
 
 // bottom navigation dependencies
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
     implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation("androidx.compose.material3:material3")
 
-    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+
+//    media player
+    implementation("androidx.media3:media3-exoplayer:1.x.x")
+    implementation("androidx.media3:media3-ui:1.x.x")
 
 }
