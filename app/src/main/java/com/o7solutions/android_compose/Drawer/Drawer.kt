@@ -30,11 +30,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.o7solutions.android_compose.Topics.ExoPlayerResScreen
 import kotlinx.coroutines.launch
 
 // Define your destinations
 sealed class Screen(val route: String, val title: String) {
-    object Home : Screen("home", "Home")
+    object Home : Screen("home", "Exoplayer")
     object Profile : Screen("profile", "Profile")
     object Settings : Screen("settings", "Settings")
 }
@@ -94,7 +95,7 @@ fun NavDrawerWithNavigation() {
                 startDestination = Screen.Home.route,
                 modifier = Modifier.padding(padding)
             ) {
-                composable(Screen.Home.route) { CenterText("Home Screen") }
+                composable(Screen.Home.route) { ExoPlayerResScreen() }
                 composable(Screen.Profile.route) { CenterText("Profile Screen") }
                 composable(Screen.Settings.route) { CenterText("Settings Screen") }
             }

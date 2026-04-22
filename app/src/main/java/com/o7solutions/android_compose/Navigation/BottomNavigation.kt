@@ -23,6 +23,7 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.o7solutions.android_compose.ImageRecognition.AIScanScreen
 import com.o7solutions.android_compose.View.HomeScreen
+import com.o7solutions.android_compose.View.ProfileScreen
 
 sealed class Screen(val route: String, val label: String, val icon: ImageVector) {
     object Home : Screen("home", "Home", Icons.Default.Home)
@@ -69,22 +70,9 @@ fun MainAppContainer(outerNavController: NavHostController) {
         ) {
             composable(Screen.Home.route) { HomeScreen(outerNavController) }
             composable(Screen.Search.route) { AIScanScreen() }
-            composable(Screen.Profile.route) { ProfileScreen("Profile Content") }
+            composable(Screen.Profile.route) { ProfileScreen() }
         }
     }
 }
 
-@Composable
-fun SearchScreen(text: String) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = text, style = MaterialTheme.typography.headlineMedium)
-    }
-}
 
-
-@Composable
-fun ProfileScreen(text: String) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = text, style = MaterialTheme.typography.headlineMedium)
-    }
-}

@@ -37,6 +37,15 @@ data class Product(
     val images: List<String>
 )
 
+data class UserResponse(
+    var id: Int ?= 0,
+    var email: String ?= null,
+    var password: String ?= null,
+    var name: String ?= null,
+    var role: String ?= null ,
+    var avatar: String ?= null
+)
+
 data class ProductResponseItem(
     @SerializedName("id")
     val id: Int,

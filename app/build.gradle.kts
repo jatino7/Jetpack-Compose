@@ -70,10 +70,10 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.8.5")
     implementation("androidx.compose.material3:material3")
 
+    val media3Version = "1.10.0"
 
-
-//    media player
-    implementation("androidx.media3:media3-exoplayer:1.x.x")
-    implementation("androidx.media3:media3-ui:1.x.x")
+    implementation("androidx.media3:media3-exoplayer:${media3Version}")
+    implementation("androidx.media3:media3-ui-compose:$media3Version")
+    implementation("androidx.media3:media3-ui:${media3Version}")
 
 }
