@@ -1,5 +1,7 @@
 package com.o7solutions.android_compose.Navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,16 +25,19 @@ import androidx.compose.ui.unit.sp
 import kotlinx.coroutines.delay
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.o7solutions.android_compose.BluetoothHid.TrackpadScreen
+import com.o7solutions.android_compose.Topics.SpeechToTextAndTTS
 import com.o7solutions.android_compose.Utils.DataStoreManager
 import com.o7solutions.android_compose.View.CategoryProducts
 import com.o7solutions.android_compose.View.LoginScreen
 
 
+@RequiresApi(Build.VERSION_CODES.P)
 @Composable
 fun MainNavigation(navController: NavHostController) {
 
 
-    NavHost(navController, startDestination = Dest.SPLASH) {
+    NavHost(navController, startDestination = Dest.TTS) {
 
         composable(Dest.SPLASH) {
             SplashScreen(navController)
@@ -51,6 +56,15 @@ fun MainNavigation(navController: NavHostController) {
             val catName = backStackEntry.arguments?.getString("catName") ?: ""
 //            CategoryProductsScreen(catId, catName)
             CategoryProducts(catId,catName)
+        }
+
+        composable(Dest.HID) {
+            TrackpadScreen()
+
+        }
+
+        composable(Dest.TTS) {
+            SpeechToTextAndTTS()
         }
     }
 }
