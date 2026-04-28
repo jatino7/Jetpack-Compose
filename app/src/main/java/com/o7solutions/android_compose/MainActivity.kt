@@ -12,6 +12,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.o7solutions.android_compose.Drawer.NavDrawerWithNavigation
 import com.o7solutions.android_compose.Navigation.MainNavigation
+import com.o7solutions.android_compose.Topics.FullAudioPlayerScreen
 import com.o7solutions.android_compose.ui.theme.Android_ComposeTheme
 
 val LocalNavController = staticCompositionLocalOf<NavHostController> {
@@ -29,8 +30,9 @@ class MainActivity : ComponentActivity() {
 
                 val navController = rememberNavController()
                 CompositionLocalProvider(LocalNavController provides navController) {
-                    MainNavigation(navController)
+//                    MainNavigation(navController)
 //                    NavDrawerWithNavigation()
+                    FullAudioPlayerScreen()
                 }
             }
         }

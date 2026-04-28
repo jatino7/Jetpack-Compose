@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.paging.testing)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
@@ -75,5 +76,9 @@ dependencies {
     implementation("androidx.media3:media3-exoplayer:${media3Version}")
     implementation("androidx.media3:media3-ui-compose:$media3Version")
     implementation("androidx.media3:media3-ui:${media3Version}")
+
+    implementation("androidx.media3:media3-session:1.10.0")
+
+    implementation("androidx.compose.material:material-icons-extended")
 
 }

@@ -37,7 +37,7 @@ import com.o7solutions.android_compose.View.LoginScreen
 fun MainNavigation(navController: NavHostController) {
 
 
-    NavHost(navController, startDestination = Dest.TTS) {
+    NavHost(navController, startDestination = Dest.SPLASH) {
 
         composable(Dest.SPLASH) {
             SplashScreen(navController)
@@ -66,6 +66,8 @@ fun MainNavigation(navController: NavHostController) {
         composable(Dest.TTS) {
             SpeechToTextAndTTS()
         }
+
+
     }
 }
 @Composable
@@ -78,12 +80,13 @@ fun SplashScreen(navController: NavHostController) {
         dataStoreManager.accessToken.collect { token ->
             delay(2000)
 
-            val target = if (!token.isNullOrEmpty()) {
-                Dest.MAIN
-            } else {
-                Dest.LOGIN
-            }
+//            val target = if (!token.isNullOrEmpty()) {
+//                Dest.MAIN
+//            } else {
+//                Dest.LOGIN
+//            }
 
+            val target = Dest.NANO
             navController.navigate(target) {
                 popUpTo(Dest.SPLASH) { inclusive = true }
             }
