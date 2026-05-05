@@ -19,6 +19,7 @@ import com.o7solutions.android_compose.BluetoothHid.BluetoothViewModel
 import com.o7solutions.android_compose.BluetoothHid.ESP32ControlScreen
 import com.o7solutions.android_compose.BluetoothHid.MainNavigation
 import com.o7solutions.android_compose.BluetoothHid.VoiceControlScreen
+import com.o7solutions.android_compose.Topics.Drawing.Canvas
 
 class MainActivity : ComponentActivity() {
 
@@ -47,27 +48,40 @@ class MainActivity : ComponentActivity() {
             val isConnectGranted = permissions[Manifest.permission.BLUETOOTH_CONNECT] ?: false
         }
 
+//        setContent {
+//            MaterialTheme {
+//                Surface(color = MaterialTheme.colorScheme.background) {
+//                    LaunchedEffect(Unit) {
+//                        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+//                            arrayOf(
+//                                Manifest.permission.BLUETOOTH_SCAN,
+//                                Manifest.permission.BLUETOOTH_CONNECT,
+//                                Manifest.permission.ACCESS_FINE_LOCATION
+//                            )
+//                        } else {
+//                            arrayOf(
+//                                Manifest.permission.ACCESS_FINE_LOCATION,
+//                                Manifest.permission.BLUETOOTH,
+//                                Manifest.permission.BLUETOOTH_ADMIN
+//                            )
+//                        }
+//                        permissionLauncher.launch(permissions)
+//                    }
+//
+//                    MainNavigation(viewModel)
+//
+////                    VoiceControlScreen()
+//                }
+//            }
+//        }
+
         setContent {
             MaterialTheme {
                 Surface(color = MaterialTheme.colorScheme.background) {
-                    LaunchedEffect(Unit) {
-                        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                            arrayOf(
-                                Manifest.permission.BLUETOOTH_SCAN,
-                                Manifest.permission.BLUETOOTH_CONNECT,
-                                Manifest.permission.ACCESS_FINE_LOCATION
-                            )
-                        } else {
-                            arrayOf(
-                                Manifest.permission.ACCESS_FINE_LOCATION,
-                                Manifest.permission.BLUETOOTH,
-                                Manifest.permission.BLUETOOTH_ADMIN
-                            )
-                        }
-                        permissionLauncher.launch(permissions)
-                    }
 
-                    MainNavigation(viewModel)
+
+                    Canvas()
+//                    MainNavigation(viewModel)
 
 //                    VoiceControlScreen()
                 }
