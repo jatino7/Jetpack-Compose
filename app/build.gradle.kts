@@ -41,6 +41,7 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.compose.runtime.livedata)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -80,5 +81,13 @@ dependencies {
     implementation("androidx.media3:media3-session:1.10.0")
 
     implementation("androidx.compose.material:material-icons-extended")
+
+
+    val work_version = "2.9.0"
+    implementation("androidx.work:work-runtime-ktx:$work_version")
+
+    implementation("com.github.ZEGOCLOUD:zego_uikit_prebuilt_call_android:+")
+
+
 
 }

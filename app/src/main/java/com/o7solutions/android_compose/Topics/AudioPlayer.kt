@@ -41,15 +41,20 @@ class AudioViewModel : ViewModel() {
                 val mediaItem = MediaItem.fromUri(url)
                 setMediaItem(mediaItem)
                 prepare()
+
+
                 addListener(object : Player.Listener {
                     override fun onIsPlayingChanged(playing: Boolean) {
-                        this@AudioViewModel.isPlaying = playing                    }
+                        this@AudioViewModel.isPlaying = playing
+                    }
                     override fun onPlaybackStateChanged(state: Int) {
                         if (state == Player.STATE_READY) {
                             this@AudioViewModel.duration = if (exoPlayer?.duration ?: 0L > 0) exoPlayer?.duration ?: 0L else 0L
                         }
                     }
                 })
+
+
             }
         }
     }
