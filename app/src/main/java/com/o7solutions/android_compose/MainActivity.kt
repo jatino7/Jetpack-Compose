@@ -20,6 +20,7 @@ import com.o7solutions.android_compose.BluetoothHid.ESP32ControlScreen
 import com.o7solutions.android_compose.BluetoothHid.MainNavigation
 import com.o7solutions.android_compose.BluetoothHid.VoiceControlScreen
 import com.o7solutions.android_compose.Topics.Drawing.Canvas
+import com.o7solutions.android_compose.Topics.MotionScrollScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -80,7 +81,8 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colorScheme.background) {
 
 
-                    Canvas()
+                    MotionScrollScreen()
+//                    Canvas()
 //                    MainNavigation(viewModel)
 
 //                    VoiceControlScreen()
