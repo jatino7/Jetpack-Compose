@@ -8,6 +8,9 @@ pluginManagement {
             }
         }
         mavenCentral()
+        maven {
+            url = uri("https://chaquo.com/maven")
+        }
         gradlePluginPortal()
     }
 }
@@ -18,6 +21,10 @@ dependencyResolutionManagement {
         mavenCentral()
         maven { url = uri("https://maven.zego.im") } // Add this
         maven { url = uri("https://www.jitpack.io") } // Add this
+
+        maven {
+            url = uri("https://chaquo.com/maven")
+        }
     }
 }
 
